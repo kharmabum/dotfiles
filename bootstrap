@@ -75,7 +75,7 @@ install_homebrew() {
       echo 'Installing Homebrew...'
         ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
         brew update
-        brew install mongodb node ruby trash coreutils grc git wget
+        brew install mongodb node ruby trash coreutils grc git wget zsh
     fi
   fi
 }
@@ -153,7 +153,8 @@ install_dotfiles () {
 }
 
 setup_mac_defaults() {
-  source $ZSH/osx/set-defaults.sh
+  source 'osx/set-defaults.sh'
+
 }
 
 open_apps() {
@@ -219,3 +220,7 @@ install_homebrew
 install_dotfiles
 setup_mac_defaults
 open_apps
+
+ZSH_ROOT="`which zsh`"
+echo 'Setting zsh as default shell...'
+chsh -s '$ZSH_ROOT'
