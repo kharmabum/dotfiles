@@ -37,6 +37,8 @@ setopt HIST_REDUCE_BLANKS
 #   like: git comm-[tab]
 setopt complete_aliases
 
+# theme: https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/smt.zsh-theme
+
 zle -N newtab
 
 bindkey '^[^[[D' backward-word
