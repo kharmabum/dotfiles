@@ -219,6 +219,3 @@ install_homebrew
 install_dotfiles
 setup_mac_defaults
 open_apps
-
-echo ''
-echo '  Run '
