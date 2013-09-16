@@ -20,7 +20,12 @@ alias grm="git status | grep deleted | awk '{\$1=\$2=\"\"; print \$0}' | \
            perl -pe 's/^[ \t]*//' | sed 's/ /\\\\ /g' | xargs git rm"
 
 
-# taken from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
+# from @paulmillr dotfiles
+# Developer tools shortcuts.
+alias tower='gittower --status'
+alias t='tower'
+
+# from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
 #
 # Will return the current branch name
 # Usage example: git pull origin $(current_branch)
