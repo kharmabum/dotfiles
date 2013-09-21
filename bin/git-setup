@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# taken from @paulmillr's dotfiles
+
+repo="$1"
+
+if [[ -z "$repo" ]]; then
+  echo "Syntax: git setup user/project"
+  echo "Example: git setup paulmillr/ostio"
+  exit
+fi
+
+mkdir -p "$PROJECTS/$repo" && \
+  cd "$PROJECTS/$repo" && \
+  git init && \
+  touch 'README.md' 'CHANGELOG.md' && \
+  cp "$HOME/.gitignore" '.gitignore' && \
+  git add "*" && git add '.gitignore' && \
+  git commit -m 'Initial commit.'

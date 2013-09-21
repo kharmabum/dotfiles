@@ -1,5 +1,8 @@
+alias ..="cd .."
 alias l.="ls -d .*"
-alias cl="clear"
+alias cl="clear && l"
+alias projects='cd $PROJECTS'
+
 
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
