@@ -7,5 +7,6 @@ requires [xcodesnippets](https://github.com/lukeredpath/xcodesnippets)
 
 ```
 $ sudo gem install xcodesnippets
+$ mkdir -p ~/Library/Developer/Xcode/UserData/CodeSnippets
 $ xcodesnippets install-bundle [path-to-snippet-bundle]
 ```
