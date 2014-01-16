@@ -1,34 +1,11 @@
-
 function xcode {
-    # get an array of .xcworkspace and .xcodeproj files
-    workspaces=(`ls -d1 *.(xcworkspace|xcodeproj) | sed -e "s/\///g"`) &> /dev/null
-    filenames=(`ls -d1 *.(xcworkspace|xcodeproj) | sed -e "s/\..*$//g"`) &> /dev/null
+    xcode_proj=`find . -name "*.xc*" -d 1 | sort -r | head -1`
 
-    if [[ ${#workspaces} == 0 ]]; then
-        echo "No Xcode projects or workspaces were found."
-        return
+    if [[ `echo -n $xcode_proj | wc -m` == 0 ]]
+    then
+        echo "No xcworkspace/xcodeproj file found in the current directory."
+    else
+        echo "Found $xcode_proj"
+        open "$xcode_proj"
     fi
-
-    # if there's just one matching file, open it.
-    if [[ ${#workspaces} == 1 ]]; then
-        `open $workspaces[1] -a /Applications/Xcode.app`
-        return
-    fi
-
-    # if there's just and xcodeproj and xcworkspace with the same name,
-    # open the xcworkspace - it's probably a Cocoapods setup.
-    if [[ ${#workspaces} == 2 ]]; then
-        if [[ $filenames[1] == $filenames[2] ]]; then
-            `open $workspaces[2] -a /Applications/Xcode.app`
-            return
-        fi
-    fi
-
-    # present a list of projects/workspaces, de-duped by name
-    counter=1
-    echo "Multiple choice currently isn't enabled. Available workspaces:"
-    for workspace in workspaces; do
-        echo "$counter. $workspace"
-        set counter += 1
-    done
 }
