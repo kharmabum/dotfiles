@@ -67,19 +67,6 @@ setup_gitconfig () {
   fi
 }
 
-install_homebrew() {
-  if [ "$(uname -s)" == "Darwin" ]
-  then
-    which -s brew
-    if [[ $? != 0 ]]; then
-      echo 'Installing Homebrew...'
-        ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-        brew update
-        brew install mongodb node ruby trash coreutils grc git wget zsh
-    fi
-  fi
-}
-
 link_files () {
   ln -s $1 $2
   success "linked $1 to $2"
@@ -152,11 +139,6 @@ install_dotfiles () {
   done
 }
 
-setup_mac_defaults() {
-  source 'osx/set-defaults.sh'
-
-}
-
 open_apps() {
   echo 'Install apps:'
   echo 'Adium:'
@@ -216,11 +198,24 @@ open_apps() {
 setup_hostname
 setup_sshkey
 setup_gitconfig
-install_homebrew
 install_dotfiles
-setup_mac_defaults
 open_apps
+
+# If we're on a Mac, let's install and setup homebrew.
+if [ "$(uname -s)" == "Darwin" ]
+then
+  info "installing dependencies"
+  if . bin/dot > /tmp/dotfiles-dot 2>&1
+  then
+    success "dependencies installed"
+  else
+    fail "error installing dependencies"
+  fi
+fi
 
 ZSH_ROOT="`which zsh`"
 echo 'Setting zsh as default shell...'
 chsh -s '$ZSH_ROOT'
+
+echo ''
+echo '  All installed!'
