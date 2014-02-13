@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
@@ -10,33 +10,44 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>#pragma mark - UIViewController
-					
-					- (void)viewDidLoad {
-					    [super viewDidLoad];
-					}
-					
-					- (void)viewDidUnload {
-					    [super viewDidUnload];
-					}
-					
-					- (void)viewWillAppear:(BOOL)animated {
-					    [super viewWillAppear:animated];
-					}
-					
-					- (void)viewDidAppear:(BOOL)animated {
-					    [super viewDidAppear:animated];
-					}
-					
-					- (void)viewWillDisappear:(BOOL)animated {
-					    [super viewWillDisappear:animated];
-					}
-					
-					- (void)viewDidDisappear:(BOOL)animated {
-					    [super viewDidDisappear:animated];
-					}
-					</string>
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Add code to clean up any of your own resources that are no longer necessary.
+    if ([self.view window] == nil) {
+        // Add code to preserve data stored in the views that might be
+        // needed later.
+        // Add code to clean up other strong references to the view in
+        // the view hierarchy.
+        self.view = nil;
+    }
+}
+
+</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>BC3DB26A-849D-428A-9FD4-7F4F4BFBF378</string>
+	<string>F241F33D-6341-44BF-AE8A-134CE42F6FE3</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetPlatformFamily</key>
