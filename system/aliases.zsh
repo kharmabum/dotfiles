@@ -2,6 +2,7 @@ alias ..="cd .."
 alias l.="ls -d .*"
 alias cl="clear && l"
 alias prj='cd $PROJECTS'
+alias dev='cd ~/Google\ Drive/Development'
 
 
 # grc overides for ls
