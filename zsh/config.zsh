@@ -6,6 +6,7 @@ fi
 
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
+export CHEATCOLORS=true
 
 fpath=($ZSH/functions $fpath)
 
