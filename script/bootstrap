@@ -70,9 +70,8 @@ setup_gitconfig () {
 install_dotfiles () {
   info 'installing dotfiles'
 
-  overwrite_all=false
-  backup_all=false
-  skip_all=false
+  local overwrite= backup= skip=
+  local overwrite_all=false backup_all=false skip_all=false
 
   for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
   do
@@ -84,10 +83,6 @@ install_dotfiles () {
 
     if [ -f "$dst" ] || [ -d "$dst" ]
     then
-
-      overwrite=false
-      backup=false
-      skip=false
 
       if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
       then
@@ -113,21 +108,25 @@ install_dotfiles () {
         esac
       fi
 
-      if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]
+      overwrite=${overwrite:-$overwrite_all}
+      backup=${backup:-$backup_all}
+      skip=${skip:-$skip_all}
+
+      if [ "$overwrite" == "true" ]
       then
         rm -rf "$dst"
         success "removed $dst"
       fi
 
-      if [ "$backup" == "true" ] || [ "$backup_all" == "true" ]
+      if [ "$backup" == "true" ]
       then
         mv "$dst" "${dst}.backup"
         success "moved $dst to ${dst}.backup"
       fi
 
-      if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
+      if [ "$skip" == "true" ]
       then
-        success "skipped $src"
+        success "skipped $source"
       fi
 
     if [ "$skip" != "true" ]  # "false" or empty
