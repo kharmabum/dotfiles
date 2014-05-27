@@ -206,7 +206,7 @@ open_apps
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"
-  if . bin/dot > /tmp/dotfiles-dot 2>&1
+  if src bin/dot > /tmp/dotfiles-dot 2>&1
   then
     success "dependencies installed"
   else
