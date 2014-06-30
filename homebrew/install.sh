@@ -13,7 +13,7 @@ then
 fi
 
   # Install homebrew packages
-  brew install mongodb node ruby trash coreutils grc git spark wget zsh hub mongodb openssl redis heroku
+  brew install node ruby trash coreutils grc git spark wget zsh hub openssl redis heroku
 fi
 
 exit 0
