@@ -2,6 +2,7 @@ alias ..="cd .."
 alias l.="ls -d .*"
 alias cl="clear && l"
 alias prj='cd $PROJECTS'
+alias jb='cd ~/Jawbone'
 alias dev='cd ~/Google\ Drive/Development'
 alias o='open .'
 alias s='subl .'
