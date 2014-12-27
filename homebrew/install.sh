@@ -12,8 +12,48 @@ then
   ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
 
-  # Install homebrew packages
-  brew install node ruby trash coreutils grc git spark wget zsh hub openssl redis heroku
-fi
+brew update
+brew upgrade
 
-exit 0
+TAPS=(
+    homebrew/dupes
+    homebrew/versions
+    caskroom/cask
+    caskroom/fonts
+    caskroom/versions
+)
+brew tap ${TAPS[@]}
+
+FORMULAS=(
+    node
+    ruby
+    trash
+    coreutils
+    grc
+    git
+    spark
+    zsh
+    hub
+    openssl
+    redis
+    heroku
+    wget
+    tree
+    imagemagick
+    caskroom/cask/brew-cask
+)
+brew install ${FORMULAS[@]}
+
+CASKS=(
+    skype
+    reveal
+    google-hangouts
+    silverlight
+    dropbox
+    google-chrome
+    flash
+    kdiff3
+)
+brew cask install ${CASKS[@]}
+
+brew cleanup

@@ -134,14 +134,12 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in `find . -maxdepth 2 -name \*.symlink`
+  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
   do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
 }
-
-
 
 open_apps() {
   echo 'Install apps:'
@@ -200,22 +198,26 @@ open_apps() {
 }
 
 setup_hostname
-setup_sshkey
+setup_sshkey  
 setup_gitconfig
 install_dotfiles
 open_apps
 
-# If we're on a Mac, let's install and setup homebrew.
+# OSX defaults + Homebrew
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"
-  if src bin/dot > /tmp/dotfiles-dot 2>&1
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
+  info ""
+  source osx/set-defaults.sh
+  source homebrew/install.sh
 fi
+
+# Sublime setup
+if [ "$(uname -s)" == "Darwin" ]
+then
+    link_file "$DOTFILES_ROOT/sublime/Packages/User/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+fi
+
 
 ZSH_ROOT="`which zsh`"
 echo 'Setting zsh as default shell...'

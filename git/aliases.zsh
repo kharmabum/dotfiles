@@ -6,7 +6,6 @@ then
   alias git=$hub_path
 fi
 
-
 # The rest of my fun git aliases
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gp='git push origin HEAD'
@@ -53,12 +52,3 @@ alias ggpush='git push origin $(current_branch)'
 #compdef ggpush=git
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
 #compdef ggpnp=git
-
-# Pretty log messages
-function _git_log_prettily(){
- if ! [ -z $1 ]; then
-   git log --pretty=$1
- fi
-}
-alias glp="_git_log_prettily"
-#compdef _git glp=git-log
