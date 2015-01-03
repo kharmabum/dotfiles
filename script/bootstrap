@@ -198,7 +198,7 @@ open_apps() {
 }
 
 setup_hostname
-setup_sshkey  
+setup_sshkey
 setup_gitconfig
 install_dotfiles
 open_apps
@@ -215,7 +215,7 @@ fi
 # Sublime setup
 if [ "$(uname -s)" == "Darwin" ]
 then
-    link_file "$DOTFILES_ROOT/sublime/Packages/User/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+    link_file "$DOTFILES_ROOT/sublime/Packages/User" "$HOME/Library/Application Support/Sublime Text 3/Packages"
 fi
 
 
