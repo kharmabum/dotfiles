@@ -11,6 +11,9 @@
 	[
 		"AlignTab",
 		"GitGutter",
+		"LiveReload",
+		"Markdown Preview",
+		"Marked App Menu",
 		"Package Control",
 		"SideBarEnhancements",
 		"Theme - Brogrammer"

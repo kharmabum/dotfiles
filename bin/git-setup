@@ -10,8 +10,8 @@ if [[ -z "$repo" ]]; then
   exit
 fi
 
-mkdir -p "$PROJECTS/$repo" && \
-  cd "$PROJECTS/$repo" && \
+mkdir -p "~/Development/$repo" && \
+  cd "~/Development/$repo" && \
   git init && \
   touch 'README.md' && \
   cp "$HOME/.gitignore" '.gitignore' && \
