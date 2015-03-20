@@ -39,6 +39,8 @@ FORMULAS=(
     heroku
     wget
     tree
+    python3
+    openssl
     imagemagick
     caskroom/cask/brew-cask
 )
