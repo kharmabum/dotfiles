@@ -13,6 +13,11 @@
 		"*.pyc",
 		"*.min.js"
 	],
+	"folder_exclude_patterns":
+	[
+		"*.tox",
+		"*venv"
+	],
 	"fold_buttons": true,
 	"font_face": "Source Code Pro",
 	"font_size": 15,

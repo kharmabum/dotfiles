@@ -42,6 +42,8 @@ FORMULAS=(
     python3
     openssl
     imagemagick
+    python3
+    docker
     caskroom/cask/brew-cask
 )
 brew install ${FORMULAS[@]}
