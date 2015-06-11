@@ -16,8 +16,8 @@
 	"fold_buttons": true,
 	"folder_exclude_patterns":
 	[
-		"*.tox",
-		"*venv"
+		".tox",
+		"venv"
 	],
 	"font_face": "Source Code Pro",
 	"font_size": 15,

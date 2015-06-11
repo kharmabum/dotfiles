@@ -23,7 +23,7 @@ alias gsu='git submodule update --init --recursive'
 
 # from @paulmillr dotfiles
 # Developer tools shortcuts.
-alias tower='gittower --status'
+alias tower='gittower .'
 alias t='tower'
 
 # from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
