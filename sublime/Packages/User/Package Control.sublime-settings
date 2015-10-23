@@ -1,4 +1,5 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
@@ -13,6 +14,7 @@
 		"Pretty JSON",
 		"SideBarEnhancements",
 		"SublimeLinter-flake8",
+		"Swift",
 		"Theme - Brogrammer"
 	]
 }
