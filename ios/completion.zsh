@@ -1,0 +1,1 @@
+fpath=(~/.marathon/ShellAutocomplete/zsh $fpath)
