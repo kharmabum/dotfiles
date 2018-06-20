@@ -25,8 +25,8 @@ then
   alias ls="gls -F --color"
 fi
 
-alias bud="tree -lR -L 3"
-alias budd="tree -lR -L 3 -d"
+alias t="tree -lR -L 3"
+alias td="tree -lR -L 3 -d"
 
 
 # taken from @paulmllr dotfiles

@@ -1,1 +1,0 @@
-aws s3 cp ./ s3://enterprise.other.chat --recursive --exclude ".DS_Store" --cache-control max-age=600
