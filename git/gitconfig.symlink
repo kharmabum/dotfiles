@@ -5,7 +5,7 @@
         protocol = https
 [user]
         name = Juan-Carlos Foust
-	email = jc@fototropik.com
+	email = jcfoust@advmicrogrid.com
 [credential]
         helper = osxkeychain
 [alias]
@@ -37,8 +37,6 @@
         #
         # Setting to git 2.0 default to surpress warning message
 	default = current
-[pull]
-        rebase = true
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
