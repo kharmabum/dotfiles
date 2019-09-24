@@ -194,10 +194,6 @@ then
   source homebrew/install.sh
 fi
 
-# Sublime setup
-if [ "$(uname -s)" == "Darwin" ]
-then
-    link_file "$DOTFILES_ROOT/sublime/Packages/User" "$HOME/Library/Application Support/Sublime Text 3/Packages"
 fi
 
 
