@@ -194,8 +194,6 @@ then
   source homebrew/install.sh
 fi
 
-fi
-
 
 ZSH_ROOT="`which zsh`"
 echo 'Setting zsh as default shell...'
