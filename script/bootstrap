@@ -143,40 +143,22 @@ install_dotfiles () {
 
 open_apps() {
   echo 'Install apps:'
-  echo 'Adium:'
-  open https://adium.im/
   echo 'Alfred:'
   open http://www.alfredapp.com/
   echo 'Canary:'
   open https://www.google.com/intl/en/chrome/browser/canary.html
   echo 'Chrome:'
   open https://www.google.com/intl/en/chrome/browser/
-  echo 'Clear:'
-  open http://www.realmacsoftware.com/clear/
   echo 'DaisyDisk:'
   open http://www.daisydiskapp.com/
-  echo 'Decelerator:'
-  open https://itunes.apple.com/us/app/decelerate/id449448909
   echo 'Divvy:'
   open http://mizage.com/divvy/
   echo 'Dropbox:'
   open https://www.dropbox.com
-  echo 'Evernote:'
-  open https://evernote.com/evernote/
   echo 'Fluid App + Trello + Google Calendar'
   open http://fluidapp.com/
   open https://trello.com/
   open http://calendar.google.com
-  echo 'Flux:'
-  open http://justgetflux.com/
-  echo 'Jitouch:'
-  open http://www.jitouch.com/
-  echo 'Little Snapper aka Ember:'
-  open http://realmacsoftware.com/ember
-  echo 'Memory Clean:'
-  open https://itunes.apple.com/us/app/memory-clean/id451444120
-  echo 'Path Finder:'
-  open http://www.cocoatech.com/pathfinder/
   echo 'Pocket:'
   open http://getpocket.com/
   echo 'Skype:'
