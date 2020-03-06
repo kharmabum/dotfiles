@@ -1,9 +1,6 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/Google\ Drive/Development/Projects
-
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
@@ -41,3 +38,7 @@ unset config_files
 
 # added by travis gem
 [ -f /Users/IO/.travis/travis.sh ] && source /Users/IO/.travis/travis.sh
+
+# load bash profile
+
+source ~/.bash_profile
