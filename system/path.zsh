@@ -1,4 +1,3 @@
-export PATH="/usr/local/bin:/usr/local/sbin:$ZSH/bin:./bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 # Android
@@ -13,3 +12,6 @@ export PATH="$HOME/.rbenv/shims:/usr/local/opt/ruby/bin:$PATH"
 
 # Heroku
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+export PATH="/usr/local/bin:/usr/local/sbin:$ZSH/bin:./bin:$PATH"
