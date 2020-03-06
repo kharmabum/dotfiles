@@ -149,6 +149,8 @@ open_apps() {
   open https://www.google.com/intl/en/chrome/browser/canary.html
   echo 'Chrome:'
   open https://www.google.com/intl/en/chrome/browser/
+  echo 'Chrome Canary'
+  open https://www.google.com/chrome/canary/
   echo 'DaisyDisk:'
   open http://www.daisydiskapp.com/
   echo 'Divvy:'
