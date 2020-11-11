@@ -181,8 +181,8 @@ open_apps() {
   open http://www.videolan.org/vlc/index.html
 }
 
-setup_hostname
-setup_sshkey
+#setup_hostname
+#setup_sshkey
 setup_gitconfig
 install_dotfiles
 open_apps

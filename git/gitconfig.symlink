@@ -5,7 +5,7 @@
         protocol = https
 [user]
         name = Juan-Carlos Foust
-	email = jcfoust@advmicrogrid.com
+	email = jc@fototropik.com
 [credential]
         helper = osxkeychain
 [alias]
@@ -22,7 +22,7 @@
         ui = true
 [core]
         excludesfile = ~/.gitignore
-        editor = subl --wait
+        editor = atom --wait
 [apply]
         whitespace = nowarn
 [mergetool]
