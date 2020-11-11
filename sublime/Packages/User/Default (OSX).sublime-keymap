@@ -1,3 +1,0 @@
-[
-        { "keys": ["ctrl+l"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
-]
