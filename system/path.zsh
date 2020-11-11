@@ -13,5 +13,7 @@ export PATH="$HOME/.rbenv/shims:/usr/local/opt/ruby/bin:$PATH"
 # Heroku
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# Yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$ZSH/bin:./bin:$PATH"

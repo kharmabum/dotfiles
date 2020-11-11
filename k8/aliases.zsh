@@ -5,6 +5,9 @@ alias k='kubectl'
 alias kgc='kubectl config get-contexts'
 alias kuc='kubectl config use-context'
 
+alias kgp='kubectl get pods --show-labels'
+alias k-watch='watch kubectl get pods'
+
 alias ke='kubectl edit'
 alias kg='kubectl get'
 alias kg-all='kubectl get all --all-namespaces | less'

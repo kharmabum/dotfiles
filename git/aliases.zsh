@@ -28,26 +28,34 @@ alias tower='gittower .'
 # from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
 #
 # Will return the current branch name
-# Usage example: git pull origin $(current_branch)
+# Usage example: git pull origin $(current-branch)
 #
-function current_branch() {
+function current-branch() {
  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
  echo ${ref#refs/heads/}
 }
 
-function current_repository() {
+function current-repository() {
  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
  echo $(git remote -v | cut -d':' -f 2)
 }
 
+function git-branches() {
+  git branch --sort=committerdate
+}
+
+function git-rename() {
+  git branch -m $1
+}
+
 # these aliases take advantage of the previous function
-alias ggpull='git pull origin $(current_branch)'
+alias ggpull='git pull origin $(current-branch)'
 #compdef ggpull=git
-alias ggpur='git pull --rebase origin $(current_branch)'
+alias ggpur='git pull --rebase origin $(current-branch)'
 #compdef ggpur=git
-alias ggpush='git push origin $(current_branch)'
+alias ggpush='git push origin $(current-branch)'
 #compdef ggpush=git
-alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
+alias ggpnp='git pull origin $(current-branch) && git push origin $(current-branch)'
 #compdef ggpnp=git

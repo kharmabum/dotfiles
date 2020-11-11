@@ -62,7 +62,7 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-
+bindkey '^R' history-incremental-search-backward
 
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]

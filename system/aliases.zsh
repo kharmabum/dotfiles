@@ -66,3 +66,12 @@ if [[ "$OSTYPE" == darwin* ]]; then
       awk -F\" '/password:/ {print $2}';
   }
 fi
+
+
+alias du-disk='du -a / | sort -n -r | head -n 5'
+
+function ssh-pbcopy() {
+  ssh -e none $1 "cat $2" | pbcopy
+}
+
+alias isodate='date +%Y-%m-%dT%H:%M:%S%z'
