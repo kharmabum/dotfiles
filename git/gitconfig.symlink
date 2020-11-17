@@ -4,7 +4,7 @@
 [hub]
         protocol = https
 [user]
-        name = Juan-Carlos Foust
+	name = Juan-Carlos Foust
 	email = jc@fototropik.com
 [credential]
         helper = osxkeychain
