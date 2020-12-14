@@ -1,0 +1,23 @@
+tldr-k9s()
+{
+  echo "- Show active keyboard mnemonics and help: '?' "
+  echo "- Show all available resource alias: 'ctrl-a' "
+  echo "- To bail out of K9s: ':q, ctrl-c' "
+  echo "- View a Kubernetes resource using singular/plural or short-name: ':po⏎' accepts singular, plural, short-name or alias ie pod or pods"
+  echo "- View a Kubernetes resource in a given namespace: ':alias namespace⏎' "
+  echo "- Filter out a resource view given a filter: '/filter⏎' Regex2 supported ie fred|blee to filter resources named fred or blee"
+  echo "- Inverse regex filer: '/! filter⏎' Keep everything that doesn’t match. Not implemented for logs."
+  echo "- Filter resource view by labels: '/-l label-selector⏎' "
+  echo "- Fuzzy find a resource given a filter: '/-f filter⏎' "
+  echo "- Bails out of view/command/filter mode: '<esc>' "
+  echo "- Key mapping to describe, view, edit, view logs,…: 'd,v, e, l,…' "
+  echo "- To view and switch to another Kubernetes context: ':ctx⏎' "
+  echo "- To view and switch to another Kubernetes context: ':ctx context-name⏎' "
+  echo "- To view and switch to another Kubernetes namespace: ':ns⏎' "
+  echo "- To view all saved resources: ':screendump or sd⏎' "
+  echo "- To delete a resource (TAB and ENTER to confirm): 'ctrl-d' "
+  echo "- To kill a resource (no confirmation dialog!): 'ctrl-k' "
+  echo "- Launch pulses view: ':pulses or pu⏎' "
+  echo "- Launch XRay view: ':xray RESOURCE [NAMESPACE]⏎' RESOURCE can be one of po, svc, dp, rs, sts, ds, NAMESPACE is optional"
+  echo "- Launch Popeye view: ':popeye or pop⏎' See https://popeyecli.io"
+}

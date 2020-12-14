@@ -42,3 +42,6 @@ unset config_files
 # load bash profile
 
 source ~/.bash_profile
+
+# use vim editing commands
+set -o vi

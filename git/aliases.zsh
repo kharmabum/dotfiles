@@ -8,18 +8,13 @@ fi
 
 # The rest of my fun git aliases
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push origin HEAD'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gc='git commit'
 alias gca='git commit -a'
-alias gcl='gitclone'
-alias gco='git checkout'
-alias gcb='git copy-branch-name'
-alias gb='git branch'
-alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
+alias gs='git status -sb'
 alias gsu='git submodule update --init --recursive'
-
+alias gclean='git clean -f'
 
 # from @paulmillr dotfiles
 # Developer tools shortcuts.
@@ -50,12 +45,17 @@ function git-rename() {
   git branch -m $1
 }
 
+function git-reset-local() {
+  git fetch
+  git reset --hard @{upstream}
+}
+
+function git-changes() {
+  git log --follow — $1
+}
+
 # these aliases take advantage of the previous function
-alias ggpull='git pull origin $(current-branch)'
-#compdef ggpull=git
-alias ggpur='git pull --rebase origin $(current-branch)'
-#compdef ggpur=git
-alias ggpush='git push origin $(current-branch)'
-#compdef ggpush=git
-alias ggpnp='git pull origin $(current-branch) && git push origin $(current-branch)'
-#compdef ggpnp=git
+alias gp='git pull origin $(current-branch)'
+alias gpr='git pull --rebase origin $(current-branch)'
+alias gprp='git pull --rebase origin $(current-branch) && git push origin $(current-branch)'
+alias gpush='git push origin $(current-branch)'
