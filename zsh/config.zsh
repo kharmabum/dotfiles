@@ -63,6 +63,8 @@ setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 bindkey '^R' history-incremental-search-backward
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]
