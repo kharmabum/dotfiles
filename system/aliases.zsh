@@ -77,4 +77,6 @@ function ssh-pbcopy() {
 alias isodate='date +%Y-%m-%dT%H:%M:%S%z'
 
 # Mount
-alias mount-list="mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1  "\n Mountpoint: "  $3}'"
+function mount_list() {
+  mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1 "\n Mountpoint: "  $3}'
+}
