@@ -185,7 +185,7 @@ open_apps() {
 #setup_sshkey
 setup_gitconfig
 install_dotfiles
-open_apps
+# open_apps
 
 # OSX defaults + Homebrew
 if [ "$(uname -s)" == "Darwin" ]
