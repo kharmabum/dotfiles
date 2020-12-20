@@ -8,6 +8,8 @@ tldr-vim()
   echo "- e Move to the end of a word."
   echo "- 0 Move cursor to beginning of line (doesn't put in insert mode)"
   echo "- $ Move cursor to end of line (doesn't put in insert mode)"
+  echo "- gg Move cursor to the start of file (doesn't put in insert mode)"
+  echo "- Shift+G Move cursor to the end of file (doesn't put in insert mode)"
   echo "- dd Delete line (saved for pasting)"
   echo "- D Delete text after current cursor position (saved for pasting)"
   echo "- p Paste text that was deleted"
