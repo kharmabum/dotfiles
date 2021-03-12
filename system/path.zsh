@@ -17,3 +17,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export PATH="/usr/local/bin:/usr/local/sbin:$ZSH/bin:./bin:$PATH"
+
+# Postgres@10
+export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/postgresql@10/lib/pkgconfig"
+  
