@@ -38,7 +38,7 @@ function current-repository() {
 }
 
 function git-branches() {
-  git branch --sort=committerdate
+  git branch --sort=-committerdate
 }
 
 function git-rename() {
@@ -51,7 +51,7 @@ function git-reset-local() {
 }
 
 function git-changes() {
-  git log --follow — $1
+  git log --stat --follow $1
 }
 
 # these aliases take advantage of the previous function
