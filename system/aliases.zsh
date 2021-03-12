@@ -75,6 +75,7 @@ function ssh-pbcopy() {
 }
 
 alias isodate='date +%Y-%m-%dT%H:%M:%S%z'
+alias tsdate='date +%s'
 
 # Mount
 function mount_list() {
