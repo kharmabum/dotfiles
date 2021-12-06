@@ -81,3 +81,5 @@ alias tsdate='date +%s'
 function mount_list() {
   mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1 "\n Mountpoint: "  $3}'
 }
+
+alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'  | pbcopy && pbpaste && echo"
