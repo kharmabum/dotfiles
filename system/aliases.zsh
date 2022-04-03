@@ -67,6 +67,10 @@ if [[ "$OSTYPE" == darwin* ]]; then
   }
 fi
 
+function port-pid() {
+  netstat -vanp tcp | grep $1 # should work on linux and mac
+  # lsof -i tcp:$1 # mac only
+}
 
 alias du-disk='du -a / | sort -n -r | head -n 5'
 
@@ -78,7 +82,7 @@ alias isodate='date +%Y-%m-%dT%H:%M:%S%z'
 alias tsdate='date +%s'
 
 # Mount
-function mount_list() {
+function mount-list() {
   mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1 "\n Mountpoint: "  $3}'
 }
 
