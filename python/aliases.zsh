@@ -4,25 +4,12 @@ alias simple='python3 -m http.server'
 # Black
 #################################################################
 
-alias black="black --config pyproject.toml"
-
+#alias black="black --config pyproject.toml"
+alias blacks="git status --porcelain | sed s/^...// | xargs -n1 black && flakes"
 #################################################################
 # Flake8
 #################################################################
 
-alias flake8="flake8 --config .flake8"
+#alias flake8="flake8 --config .flake8"
+alias flakes="git status --porcelain | sed s/^...// | xargs -n1 flake8"
 
-#################################################################
-# Conda
-#################################################################
-
-
-alias conda-kill="pkill -f conda_packaging_tool.py"
-
-conda-create() {
-  conda create --name $1 python=$2
-}
-
-conda-list() {
-  conda env list
-}
