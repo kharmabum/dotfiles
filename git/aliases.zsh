@@ -54,6 +54,10 @@ function git-changes() {
   git log --stat --follow $1
 }
 
+function git-delete-all() {
+  git branch | grep -v "master" | xargs git branch -D 
+}
+
 # these aliases take advantage of the previous function
 alias gp='git pull origin $(current-branch)'
 alias gpr='git pull --rebase origin $(current-branch)'

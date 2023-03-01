@@ -36,12 +36,8 @@ done
 
 unset config_files
 
-# added by travis gem
-[ -f /Users/IO/.travis/travis.sh ] && source /Users/IO/.travis/travis.sh
-
 # load bash profile
 
 source ~/.bash_profile
 
-# use vim editing commands
-set -o vi
+
