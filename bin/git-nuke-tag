@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Nukes a tag locally and on the origin remote.
+#
+# $1 - tag name.
+#
+# Examples
+#
+#   git-nuke-tag 0.1.0
+
+git tag -d $1
+git push origin :refs/tags/$1
