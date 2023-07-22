@@ -14,7 +14,7 @@ alias gc='git checkout'
 alias gca='git commit -a'
 alias gs='git status -sb'
 alias gsu='git submodule update --init --recursive'
-alias gclean='git clean -f'
+alias gclean='git reset && git clean -f && git checkout .'
 
 # from @paulmillr dotfiles
 # Developer tools shortcuts.
