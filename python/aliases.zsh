@@ -1,4 +1,5 @@
 alias simple='python3 -m http.server'
+alias activate='source .venv/bin/activate'
 
 #################################################################
 # Black
