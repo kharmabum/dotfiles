@@ -39,5 +39,3 @@ unset config_files
 # load bash profile
 
 source ~/.bash_profile
-
-
