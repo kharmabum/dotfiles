@@ -181,20 +181,25 @@ open_apps() {
   open http://www.videolan.org/vlc/index.html
 }
 
+update_mac_defaults() {
+  if [ "$(uname -s)" == "Darwin" ]
+  then
+    info "installing dependencies"
+    info ""
+    source osx/set-defaults.sh
+    source homebrew/install.sh
+  fi
+}
+
 #setup_hostname
 #setup_sshkey
-setup_gitconfig
+#setup_gitconfig
 install_dotfiles
+#update_mac_defaults
 # open_apps
 
 # OSX defaults + Homebrew
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  info ""
-  source osx/set-defaults.sh
-  source homebrew/install.sh
-fi
+
 
 
 ZSH_ROOT="`which zsh`"
