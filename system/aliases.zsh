@@ -25,8 +25,16 @@ then
   alias ls="gls -F --color"
 fi
 
-alias t="tree -lR -L 3"
-alias td="tree -lR -L 3 -d"
+
+function t() {
+  local depth="${1:-3}"
+  tree -n -lR -L "$depth"
+}
+
+# directories only
+function td() {
+  local depth="${1:-3}"
+  tree -n -lR -L -d "$depth"}
 
 
 # taken from @paulmllr dotfiles
