@@ -1,1 +1,9 @@
-sshfs diglett@portal.diglett.xyz:./ ~/diglett
+#!/bin/sh
+# Can't get sftp to work 
+# cloudflared access ssh --hostname portal.diglett.xyz --url localhost:4444
+# sshfs -p 4444 diglett@localhost:./ ~/diglett
+# 
+# In the meantime run this command
+# Then connect to smd://localhost:2222/diglett 
+
+cloudflared access tcp --hostname smb.diglett.xyz --url localhost:2222

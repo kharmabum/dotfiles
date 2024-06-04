@@ -83,10 +83,10 @@ function port-pid() {
 alias du-disk='du -a / | sort -n -r | head -n 5'
 
 function ssh-pbcopy() {
-  ssh -e none $1 "cat $2" | pbcopy
+  cat ~/.ssh/id_rsa.pub | pbcopy
 }
 
-alias isodate='date +%Y-%m-%dT%H:%M:%S%z'
+alias isodate='date +%Y-%m-%dT%H:%M:%S%Z'
 alias tsdate='date +%s'
 
 # Mount

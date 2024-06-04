@@ -2,7 +2,7 @@
         protocol = https
 [user]
 	name = Juan-Carlos Foust
-	email = jfoust@ginkgobioworks.com
+	email = mail@fototropik.com
 [credential]
 	helper = store
 [alias]
