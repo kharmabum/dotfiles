@@ -76,7 +76,14 @@ set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
 
+export_aws_profile () {
+  export AWS_PROFILE="$( cat ~/.aws/profile )"
+}
+
+# ZSH has 'hooks' which are run at certain times.
+# One is 'precmd', which runs before the shell prompt renders:
 precmd() {
   title "zsh" "%m" "%55<...<%~"
   set_prompt
+  export_aws_profile
 }
