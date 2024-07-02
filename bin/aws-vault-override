@@ -23,3 +23,19 @@ else
     # If AWS_VAULT is already set then we want to just use the existing session instead of nesting them
     exec "${TARGET}" "$@"
 fi
+
+
+# Example usage
+# ~/bin % ln -s ./vault_override ./aws
+# ~/bin % ls -alh ./aws
+# lrwxr-xr-x 1 edanielson 16 Dec  2 13:47 ./aws -> ./vault_override
+# # ZSH may need a bit of nudging when you add commands to
+# # PATH directories that are already elsehwere on the path
+# # NOTE: Not neccessary on Bash
+# ~/bin % rehash
+# ~/bin % which aws
+# /Users/<your username>/bin/aws # or /home/<your username>/bin/aws if you're on linux
+# # Set our AWS_PROFILE env variable to the profile we want to use.
+# # (This must match the config above):
+# ~/bin % export AWS_PROFILE=<AWS Account Name>
+# ~/bin % aws sts get-caller-identity
