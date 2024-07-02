@@ -36,11 +36,12 @@ done
 
 unset config_files
 
+# load bash profile
+source ~/.bash_profile
+
 # Ensure $HOME/bin directory exists
 [ -d "$HOME/bin" ] || mkdir -p "$HOME/bin"
 
-# Add $HOME/bin to the PATH
+# Add $HOME/bin to the PATH - run this last to ensure this dir is always
+# preferred
 export PATH="$HOME/bin:$PATH"
-
-# load bash profile
-source ~/.bash_profile
