@@ -39,3 +39,5 @@ fi
 # # (This must match the config above):
 # ~/bin % export AWS_PROFILE=<AWS Account Name>
 # ~/bin % aws sts get-caller-identity
+# change the keychain to only lock when the computer goes to sleep.
+# security set-keychain-settings -l ~/Library/Keychains/aws-vault.keychain-db 
