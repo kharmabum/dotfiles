@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -eo pipefail
+
+# Provides a shim to override target executables so that it is executed through aws-vault
+# See https://github.com/99designs/aws-vault/blob/ae56f73f630601fc36f0d68c9df19ac53e987369/USAGE.md#overriding-the-aws-cli-to-use-aws-vault 
+# for more information about using it for the AWS CLI.
+
+# Work out what we're shimming and then find the non shim version so we can execute that.
+# which -a returns a sorted list of the order of binaries that are on the PATH, we want the first
+# one which doesn't match the path to this script.
+COMMAND=$(basename $0)
+REALPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )/${COMMAND}"
+
+for ENTRY in $(which -a ${COMMAND}); do
+    [ "$ENTRY" != "$REALPATH" ] && TARGET="$ENTRY" && break;
+done
+[ -z "$TARGET" ] && echo "Could not find original path for $COMMAND" && exit 127
+
+if [ -z ${AWS_VAULT} ]; then
+    exec aws-vault exec "${AWS_PROFILE}" -- "${TARGET}" "$@"
+else
+    # If AWS_VAULT is already set then we want to just use the existing session instead of nesting them
+    exec "${TARGET}" "$@"
+fi
