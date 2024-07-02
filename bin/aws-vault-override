@@ -26,6 +26,7 @@ fi
 
 
 # Example usage
+# Move this script into ~/bin/vault_override
 # ~/bin % ln -s ./vault_override ./aws
 # ~/bin % ls -alh ./aws
 # lrwxr-xr-x 1 edanielson 16 Dec  2 13:47 ./aws -> ./vault_override
