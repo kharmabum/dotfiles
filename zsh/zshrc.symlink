@@ -39,9 +39,11 @@ unset config_files
 # load bash profile
 source ~/.bash_profile
 
-# Ensure $HOME/bin directory exists
+# Ensure $HOME bin directories exists (.local/bin is preferred by pipx)
 [ -d "$HOME/bin" ] || mkdir -p "$HOME/bin"
+[ -d "$HOME/.local/bin" ] || mkdir -p "$HOME/.local/bin" 
 
-# Add $HOME/bin to the PATH - run this last to ensure this dir is always
+# Add $HOME bins to the PATH - run this last to ensure this dir is always
 # preferred
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
