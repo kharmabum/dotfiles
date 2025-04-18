@@ -1,3 +1,3 @@
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=code
+export VISUAL=code
 export PAGER='less'

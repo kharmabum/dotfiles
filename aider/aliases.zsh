@@ -1,0 +1,1 @@
+alias aider-qwen='aider --no-auto-commits --watch-files --model ollama_chat/qwen2.5-coder:7b'

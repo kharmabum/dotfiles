@@ -8,6 +8,7 @@ fi
 
 # The rest of my fun git aliases
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias glm='git log --first-parent --pretty=format:"%h %ad | %s%d [%an]" --date=short'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gc='git checkout'
@@ -15,6 +16,7 @@ alias gca='git commit -a'
 alias gs='git status -sb'
 alias gsu='git submodule update --init --recursive'
 alias gclean='git reset && git clean -f && git checkout .'
+alias grc='git rebase --continue'
 
 # from @paulmillr dotfiles
 # Developer tools shortcuts.

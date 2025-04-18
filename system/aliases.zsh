@@ -25,16 +25,16 @@ then
   alias ls="gls -F --color"
 fi
 
-
 function t() {
-  local depth="${1:-3}"
-  tree -n -lR -L "$depth"
+    local depth="${1:-3}" 
+    local pattern="${2:-*}" # Default pattern to match all files and directories
+    tree -n -lR -L "$depth" -P "$pattern" --matchdirs
 }
 
 # directories only
 function td() {
   local depth="${1:-3}"
-  tree -n -lR -L -d "$depth"}
+  tree -n -lR -d -L "$depth"}
 
 
 # taken from @paulmllr dotfiles
@@ -95,3 +95,5 @@ function mount-list() {
 }
 
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'  | pbcopy && pbpaste && echo"
+
+alias clear-dns="sudo killall -HUP mDNSResponder "
