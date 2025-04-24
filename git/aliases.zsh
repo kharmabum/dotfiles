@@ -18,9 +18,16 @@ alias gsu='git submodule update --init --recursive'
 alias gclean='git reset && git clean -f && git checkout .'
 alias grc='git rebase --continue'
 
-# from @paulmillr dotfiles
-# Developer tools shortcuts.
-alias tower='gittower .'
+function gcleanw() {
+  # Remove non-critical branches from workspace
+  #
+  # List all local branches, exclude HEAD, and filter out protected branches
+  git branch | grep -v "HEAD" | grep -vE 'main|master|uat|dev|staging|qa' | while read -r branch; do
+    # Remove leading/trailing whitespace and delete the branch
+    branch=$(echo "$branch" | xargs)
+    git branch -D "$branch"
+  done
+}
 
 # from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
 #
@@ -54,10 +61,6 @@ function git-reset-local() {
 
 function git-changes() {
   git log --stat --follow $1
-}
-
-function git-delete-all() {
-  git branch | grep -v "master" | xargs git branch -D 
 }
 
 # these aliases take advantage of the previous function

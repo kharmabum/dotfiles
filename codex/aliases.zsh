@@ -1,0 +1,1 @@
+alias cx='codex --approval-mode full-auto'
