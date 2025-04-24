@@ -36,9 +36,6 @@ done
 
 unset config_files
 
-# load bash profile
-source ~/.bash_profile
-
 # Ensure $HOME bin directories exists (.local/bin is preferred by pipx)
 [ -d "$HOME/bin" ] || mkdir -p "$HOME/bin"
 [ -d "$HOME/.local/bin" ] || mkdir -p "$HOME/.local/bin" 
@@ -47,3 +44,7 @@ source ~/.bash_profile
 # preferred
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+# load bash profile
+source ~/.bash_profile
+[[ -s "/Users/jfoust/.gvm/scripts/gvm" ]] && source "/Users/jfoust/.gvm/scripts/gvm"
