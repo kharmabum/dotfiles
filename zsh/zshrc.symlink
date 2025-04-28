@@ -47,4 +47,3 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # load bash profile
 source ~/.bash_profile
-[[ -s "/Users/jfoust/.gvm/scripts/gvm" ]] && source "/Users/jfoust/.gvm/scripts/gvm"
