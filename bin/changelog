@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# changelog.sh
+#
+# Outputs history of commits between where HEAD is and target branch
+# based on last shared commit.
+# 
+# Fetches remote and compares state of HEAD to target branch, defaulting
+# to the remote of current branch if none is providing.
+# 
+# Usage: cd APP_DIR && ~/changelog.sh
+
+# Get the current branch name
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Set the target to origin/<current-branch> if no input is provided, otherwise use the input
+if [ -z "$1" ]; then
+    TARGET="origin/$CURRENT_BRANCH"
+else
+    TARGET="$1"
+fi
+
+# Get the current branch's HEAD
+CURRENT_HEAD=$(git rev-parse HEAD)
+
+# Update remote branches
+git fetch --all
+
+# Find the common ancestor between current HEAD and the target
+MERGE_BASE=$(git merge-base "$CURRENT_HEAD" "$TARGET")
+
+if [ -z "$MERGE_BASE" ]; then
+    echo "Error: Could not find a common ancestor between HEAD and $TARGET"
+    exit 1
+fi
+
+# Get the commits on the target branch since the merge base
+COMMITS=$(git log --first-parent --pretty=format:"%h | %s%d [%an]" "$MERGE_BASE".."$TARGET")
+
+if [ -z "$COMMITS" ]; then
+    echo "No new commits found on $TARGET since the common ancestor."
+    exit 0
+fi
+
+# Output the changelog summary
+echo "Changelog for $TARGET since common ancestor with HEAD:"
+echo "------------------------------------------------"
+echo "$COMMITS"

@@ -9,6 +9,6 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/jfoust/Library/Application Support/Herd/
 
 export SAIL_XDEBUG_MODE=debug
 
-if which herd > /dev/null; then
-  herd use 8.2
-fi
+# if which herd > /dev/null; then
+#   herd use 8.2
+# fi
