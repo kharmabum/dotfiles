@@ -35,7 +35,7 @@ if [ -z "$MERGE_BASE" ]; then
 fi
 
 # Get the commits on the target branch since the merge base
-COMMITS=$(git log --first-parent --pretty=format:"%h | %s%d [%an]" "$MERGE_BASE".."$TARGET")
+COMMITS=$(git log --first-parent --pretty=format:"%h | %ad | %s%d [%an]" --date=short "$MERGE_BASE".."$TARGET")
 
 if [ -z "$COMMITS" ]; then
     echo "No new commits found on $TARGET since the common ancestor."
