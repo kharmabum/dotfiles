@@ -1,6 +1,28 @@
 alias simple='python3 -m http.server'
 alias vcreate='python -m venv venv'
-alias activate='source venv/bin/activate'
+
+function activate() {
+  if [ -d .venv ]; then
+    echo "Activating .venv..."
+    if [ -f .venv/bin/activate ]; then
+      source .venv/bin/activate
+    else
+      echo "Error: .venv exists but bin/activate is missing." >&2
+      return 1
+    fi
+  elif [ -d venv ]; then
+    echo "Activating venv..."
+    if [ -f venv/bin/activate ]; then
+      source venv/bin/activate
+    else
+      echo "Error: venv exists but bin/activate is missing." >&2
+      return 1
+    fi
+  else
+    echo "Error: No virtual environment directory found (.venv or venv)." >&2
+    return 1
+  fi
+}
 
 # Function to create and activate a Python virtual environment
 # Example usage: create_venv [python_version]
