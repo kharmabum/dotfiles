@@ -1,0 +1,1 @@
+alias or='opencode run'
