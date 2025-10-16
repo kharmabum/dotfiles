@@ -1,4 +1,4 @@
-Follow these steps for each interaction:
+Follow these steps for each interaction -- note that the following steps only apply if a knowledge-graph (MCP) tool is available.
 
 1. Project Context Retrieval:
 

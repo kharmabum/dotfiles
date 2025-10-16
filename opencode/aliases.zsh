@@ -1,1 +1,1 @@
-alias or='opencode run'
+alias ocr='opencode run'

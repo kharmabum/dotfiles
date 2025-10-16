@@ -2,6 +2,6 @@
 
 # Check if gvm is installed
 if which gvm > /dev/null; then
-  gvm use go1.21 --default
+  gvm use go1.22.1 --default 
   go version
 fi

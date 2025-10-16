@@ -14,7 +14,7 @@ SECTION: CORE PRINCIPLES
 ================================================================
 SECTION: OPERATIONAL MODES
 
-[PLANNING_MODE]
+[PLANNING_MODES]
 
 - Rerun requirement checklist (P1) at start & end.
 - Ensure each delivered artifact maps to an explicit requirement.
@@ -22,7 +22,7 @@ SECTION: OPERATIONAL MODES
 - Provide plan inline; DO NOT persist plan to a markdown file pre‑coding.
 - Identify side effects & isolate them (see SIDE_EFFECTS).
 
-[CODING_MODE]
+[CODING_MODES]
 
 - Apply smallest diff; avoid drive‑by refactors.
 - Do NOT fix linting errors unless explicitly requested.
@@ -34,36 +34,22 @@ SECTION: OPERATIONAL MODES
 - Summarize each file/class purpose (single concise header or docstring).
 - Notify (do not auto-fix) significant security/performance/reliability deficiencies.
 
-[TESTING_MODE]
+[TESTING_MODES]
 
 - Add / modify tests proportionate to change scope.
 - Do NOT perform or suggest manual browser validation unless explicitly asked.
 - Focus on deterministic, unit/pure tests for core logic; integration tests at boundaries.
 
 ================================================================
-SECTION: EXTERNAL FILE LOADING
-
-- EFL_ROOT: `~/.config/opencode/`
-- EFL1: When a file reference is encountered, use Read tool _lazily_ (on-demand only).
-- EFL2: Do NOT pre-load all references; no bulk or speculative reads.
-- EFL3: Once loaded, treat file content as _mandatory overriding instructions_ (supersedes defaults where conflicting).
-- EFL4: Follow referenced files recursively only when needed for the current task.
-- EFL5: Cache mentally; re-open only if clarification required. Avoid redundant reads.
-- EFL6: Record (in reasoning, not output) which external files influenced current answer.
-- EFL7: If a referenced file is missing/inaccessible, report succinctly with required path and proceed conservatively.
-- EFL8: Never hallucinate file contents; if not loaded, explicitly note requirement to load before relying.
-- EFL9: Do not expose full file content unless necessary; extract only relevant directives.
-
-================================================================
 SECTION: CHANGE MANAGEMENT
 
 - CM1: One conceptual change per commit/diff.
-- CM2: No mixing of style-only edits with functional changes.
+- CM2: Avoid mixing refactors and stylistic changes with functional changes.
 - CM3: Defer large refactors; instead, annotate opportunities (see META_NOTES section if supported).
-- CM4: If a critical deficiency (security, perf, reliability) is observed, report succinctly with recommended minimal fix path.
-
-================================================================
-SECTION: DOCUMENTATION & COMMENTS
+- CM4: If a critical deficiency (security, perf, reliability) is observed, leave a comment in the code with recommended minimal fix path.
+- CM5: Do not auto-apply large corrective refactors unless explicitly authorized.
+- ================================================================
+  SECTION: DOCUMENTATION & COMMENTS
 
 - D1: Minimal comments: only for non-obvious intent, invariants, subtle algorithms, edge cases.
 - D2: Do NOT add comments that restate self-evident code.
@@ -75,18 +61,14 @@ SECTION: DOCUMENTATION & COMMENTS
 SECTION: TYPING
 
 - T1: Use strict/static types wherever language/tooling allows.
-- T2: In docstrings (when adding), include inner element types: e.g. `Collection<ODSContractData>`, `array{field:string,date_start:string,date_end:string}`, `int[]`.
-- T3: Do NOT duplicate docstring type info already expressed unambiguously in code signatures.
-- T4: Prefer explicit return/parameter types over inference when it removes ambiguity for maintainers or downstream tooling.
+- T2: Do NOT duplicate docstring type info already expressed unambiguously in code signatures.
+- T3: Prefer explicit return/parameter types over inference when it removes ambiguity for maintainers or downstream tooling.
 
 ================================================================
 SECTION: DRY_POLICY
 
 - DRY1: Remove duplication that risks divergence or inflates maintenance.
-- DRY2: Allow repetition if abstraction would:
-  - Obscure intent,
-  - Introduce leaky/generalized constructs without a real domain concept,
-  - Increase change surface disproportionately.
+- DRY2: Allow repetition if abstraction would obscure intent or increase change surface disproportionately.
 - DRY3: Abstract only after ≥2–3 concrete, stable repetitions that share a real semantic concept.
 
 ================================================================
@@ -113,13 +95,6 @@ SECTION: COMPOSITION & REUSE
 - COMP3: Reject superficial similarity abstractions that reduce clarity.
 
 ================================================================
-SECTION: COMMENT / WARNING EMISSION
-
-- WARN1: When encountering major security/performance/reliability concern, output a succinct NOTE block:
-  Format: `NOTE[category]: issue → minimal recommended action (impact if ignored).`
-- WARN2: Do not auto-apply large corrective refactors unless explicitly authorized.
-
-================================================================
 SECTION: EXECUTION CHECKLIST (Apply Before Final Answer)
 
 1. Re-read original task (P1).
@@ -139,14 +114,5 @@ SECTION: RESPONSE STYLE (LLM OUTPUT)
 - STYLE1: Default to terse bullet or structured block unless user asks for narrative.
 - STYLE2: Provide code diff or file content only; avoid extraneous commentary.
 - STYLE3: When refusing additional scope (e.g., linting error fixes not requested), cite rule reference plainly (e.g., “Per CODING_MODE rule: not fixing TS errors unless requested.”)
-
-================================================================
-SECTION: PROHIBITIONS
-
-- PROH1: No unsanctioned broad refactors.
-- PROH2: No redundant docstring type duplication.
-- PROH3: No verbose architectural essays unless explicitly requested.
-- PROH4: No browser/manual UI validation steps unless asked.
-- PROH5: Do not remove existing comments without justification.
 
 # END GLOBAL_AGENT_POLICY
