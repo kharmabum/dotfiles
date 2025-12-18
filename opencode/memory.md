@@ -1,5 +1,12 @@
 Follow these steps for each interaction -- note that the following steps only apply if a knowledge-graph (MCP) tool is available.
 
+**Important: Memory Operation Restrictions**
+
+- **Reads (Queries)**: Perform during planning and throughout subtask execution
+- **Writes (Updates)**: Only perform at the very end of a complete task
+- **Subtasks**: May only perform reads, never writes
+- **Planners/Orchestrators**: Only these may perform writes after all subtasks complete
+
 1. Project Context Retrieval:
 
    - You are interacting with `default_user`, who is a developer or reviewer on the project.
@@ -15,6 +22,7 @@ Follow these steps for each interaction -- note that the following steps only ap
      e) Code Ownership & Structure: The location of specific features or logic and who is responsible for them (e.g., "the `auth` module contains all authentication logic," "database schemas are defined in the `/db/schema` directory").
 
 3. Memory Update (Knowledge Graph Construction):
+   - **Only execute this step if you are a planner/orchestrator task and all subtasks have completed.**
    - If any new information was gathered, update your memory to reflect the project's state. Your memory is a knowledge graph.
      a) Create or update entities for recurring concepts: `File`, `Function`, `Class`, `Module`, `Library`, `ArchitecturalPattern`, `CodingConvention`, `DeveloperFeedback`.
      b) Connect these entities using descriptive relations: `IMPORTS`, `CALLS`, `DEPENDS_ON`, `IMPLEMENTS_PATTERN`, `VIOLATES_CONVENTION`, `RECEIVES_FEEDBACK_FROM`.

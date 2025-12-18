@@ -1,0 +1,80 @@
+#!/bin/bash
+#
+# prd
+#
+# Generates pull request descriptions by comparing the current branch
+# against a base branch using an AI agent.
+#
+# Usage: prd <base-branch>
+
+# Prompt template for AI agent
+read -r -d '' PROMPT_TEMPLATE << 'EOF'
+Generate a pull request description with the following format:
+
+## Summary
+Provide 3-5 sentences describing what this PR does, its purpose, and any important context.
+
+## Changes
+List all changes as a bulleted list in imperative mood following these rules:
+- Format class/type names in **bold**
+- Format method/function names in `code`
+- Use code blocks for larger snippets when appropriate
+- Use imperative mood (e.g., "Add method", "Update class", not "Added" or "Updates")
+
+Example changes section:
+- Change `supplier_ids` parameter to `global_supplier_ids` in **OverviewSearchCriteria**, **OverviewFilterRequest** and **OverviewSupplierGroupsRequest**
+- Add private constant `TRANSITIVE_RELATIONSHIP_MAPPING` to **OverviewQueryBuilder**, and change `supplier_ids` to `global_supplier_ids` in the `FILTER_COLUMN_MAPPING` constant
+- Create `applyTransitiveRelationshipConditions` method in **OverviewQueryBuilder**
+- Update annotations for `applyFilters` method in **OverviewQueryBuilder**
+- Remove `'supplier_ids'` case and add `'global_supplier_ids'` case to the `applyFilters` method in **OverviewQueryBuilder**
+
+Here are the changes to describe:
+
+EOF
+
+# Check for base branch argument
+if [ -z "$1" ]; then
+    echo "Error: Base branch argument required"
+    echo "Usage: prd <base-branch>"
+    exit 1
+fi
+
+BASE_BRANCH="$1"
+
+# Change to repository root
+REPO_ROOT=$(git rev-parse --show-toplevel)
+cd "$REPO_ROOT" || exit 1
+
+# Get current branch name
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Fetch remote
+git fetch --all
+
+# Find merge base
+MERGE_BASE=$(git merge-base HEAD "$BASE_BRANCH")
+
+if [ -z "$MERGE_BASE" ]; then
+    echo "Error: Could not find merge base between HEAD and $BASE_BRANCH"
+    exit 1
+fi
+
+# Get changed files
+CHANGED_FILES=$(git diff --name-only "$MERGE_BASE" HEAD)
+
+if [ -z "$CHANGED_FILES" ]; then
+    echo "Error: No changed files found between $MERGE_BASE and HEAD"
+    exit 1
+fi
+
+# Get full diff
+DIFF=$(git diff "$MERGE_BASE" HEAD)
+
+# Compose full prompt
+prompt="${PROMPT_TEMPLATE}${DIFF}"
+
+# Use environment variable for agent command or default
+AGENT_CMD="${PRD_AGENT_CMD:-genai-opencode run}"
+
+# Invoke agent command
+eval "$AGENT_CMD \"\$prompt\""
