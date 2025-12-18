@@ -8,13 +8,15 @@
 # Usage: prd <base-branch>
 
 # Prompt template for AI agent
-read -r -d '' PROMPT_TEMPLATE << 'EOF'
+PROMPT_TEMPLATE=$(cat << 'EOF'
 Generate a pull request description with the following format:
 
 ## Summary
+
 Provide 3-5 sentences describing what this PR does, its purpose, and any important context.
 
 ## Changes
+
 List all changes as a bulleted list in imperative mood following these rules:
 - Format class/type names in **bold**
 - Format method/function names in `code`
@@ -31,6 +33,7 @@ Example changes section:
 Here are the changes to describe:
 
 EOF
+)
 
 # Check for base branch argument
 if [ -z "$1" ]; then
@@ -77,4 +80,4 @@ prompt="${PROMPT_TEMPLATE}${DIFF}"
 AGENT_CMD="${PRD_AGENT_CMD:-genai-opencode run}"
 
 # Invoke agent command
-eval "$AGENT_CMD \"\$prompt\""
+$AGENT_CMD "$prompt"
