@@ -13,7 +13,7 @@ Generate a pull request description with the following format:
 
 ## Summary
 
-Provide 3-5 sentences describing what this PR does, its purpose, and any important context.
+Provide 2-3 sentences describing what this PR does, its purpose, and any important context.
 
 ## Changes
 
@@ -30,7 +30,9 @@ Example changes section:
 - Update annotations for `applyFilters` method in **OverviewQueryBuilder**
 - Remove `'supplier_ids'` case and add `'global_supplier_ids'` case to the `applyFilters` method in **OverviewQueryBuilder**
 
-Here are the changes to describe:
+Aim for brevity and succintness. 
+
+Here are the changes (full diff):
 
 EOF
 )
