@@ -32,6 +32,8 @@ Example changes section:
 
 Aim for brevity and succintness. 
 
+Do not create a PR. Only output the PR description.
+
 Here are the changes (full diff):
 
 EOF
