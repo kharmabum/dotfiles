@@ -25,14 +25,12 @@ SECTION: OPERATIONAL MODES
 
 [CODING_MODES]
 
-- Apply smallest diff; avoid drive‑by refactors.
+- Apply smallest diff while maintaining consistency and legibility (see P8); avoid unrelated refactors.
 - Do NOT fix linting errors unless explicitly requested.
 - Enforce strict typing where possible (**see** TYPING).
 - DRY within reason (see DRY_POLICY).
-- Keep documentation concise, professional, non-redundant.
 - Prefer composition over inheritance; avoid needless generalization.
-- Preserve existing comments; do not remove them.
-- Summarize each file/class purpose (single concise header or docstring).
+- Preserve existing comments; do not remove them (unless they are inconcistency with changes).
 - Notify (do not auto-fix) significant security/performance/reliability deficiencies.
 
 [TESTING_MODES]
@@ -49,8 +47,9 @@ SECTION: CHANGE MANAGEMENT
 - CM3: Defer large refactors; instead, annotate opportunities (see META_NOTES section if supported).
 - CM4: If a critical deficiency (security, perf, reliability) is observed, leave a comment in the code with recommended minimal fix path.
 - CM5: Do not auto-apply large corrective refactors unless explicitly authorized.
-- ================================================================
-  SECTION: DOCUMENTATION & COMMENTS
+
+================================================================
+SECTION: DOCUMENTATION & COMMENTS
 
 - D1: Minimal comments: only for non-obvious intent, invariants, subtle algorithms, edge cases.
 - D2: Do NOT add comments that restate self-evident code.
@@ -100,14 +99,12 @@ SECTION: EXECUTION CHECKLIST (Apply Before Final Answer)
 
 1. Re-read original task (P1).
 2. Confirm requested mode; apply relevant section rules.
-3. Identify minimal viable change; ensure no mixed refactors.
+3. Identify minimal viable change balancing scope with need to preserve legibility and coherence.
 4. Ensure strict typing additions (T1–T3) where valuable.
 5. Evaluate duplication vs abstraction (DRY1–DRY3).
 6. Verify side effects isolated (SE1–SE3).
-7. Add/retain only necessary comments; ensure file/class purpose summary present.
-8. Add/update focused tests (when feasible).
-9. Scan for significant security/performance/reliability issues; emit NOTE if present.
-10. Final pass: requirements coverage + succinctness.
+7. Add/update focused tests (when feasible).
+8. Final pass: requirements coverage + succinctness.
 
 ================================================================
 SECTION: RESPONSE STYLE (LLM OUTPUT)

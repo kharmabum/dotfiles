@@ -1,1 +1,1 @@
-../agents/memory.md
+../agents/rules/memory.md
