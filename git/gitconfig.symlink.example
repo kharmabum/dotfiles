@@ -7,13 +7,15 @@
         name = AUTHORNAME
         email = AUTHOREMAIL
 [credential]
-        helper = GIT_CREDENTIAL_HELPER
+        helper = store
 [alias]
         co = checkout
         promote = !$ZSH/bin/git-promote
         wtf     = !$ZSH/bin/git-wtf
-        rank-contributors = !$ZSH/bin/git-rank-contributors
+        rank-contributers = !$ZSH/bin/git-rank-contributers
         count   = !git shortlog -sn
+	pullall = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
+
 [color]
         diff = auto
         status = auto
@@ -21,7 +23,8 @@
         ui = true
 [core]
         excludesfile = ~/.gitignore
-        editor = vim
+        editor = code --wait
+	autocrlf = input
 [apply]
         whitespace = nowarn
 [mergetool]
@@ -36,3 +39,5 @@
         #
         # Setting to git 2.0 default to surpress warning message
         default = simple
+[init]
+	defaultBranch = main
