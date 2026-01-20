@@ -30,7 +30,7 @@ Example changes section:
 - Update annotations for `applyFilters` method in **OverviewQueryBuilder**
 - Remove `'supplier_ids'` case and add `'global_supplier_ids'` case to the `applyFilters` method in **OverviewQueryBuilder**
 
-Aim for brevity and succintness. 
+Aim for brevity and succintness. For large changesets, group related changes e.g. per file or per module.
 
 Do not create a PR. Only output the PR description.
 

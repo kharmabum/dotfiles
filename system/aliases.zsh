@@ -97,3 +97,5 @@ function mount-list() {
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'  | pbcopy && pbpaste && echo"
 
 alias clear-dns="sudo killall -HUP mDNSResponder "
+
+alias lmake='make -f Makefile.local'
