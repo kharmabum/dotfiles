@@ -32,7 +32,8 @@ You are tasked with creating detailed implementation plans through an interactiv
    - Read them FULLY into the main context
    - This ensures you have complete understanding before proceeding
 
-    You only need to perform this step if the user did not provide a file reference to an existing research document.
+   You only need to perform this step if the user did not provide a file reference to an existing research document.
+
 3. **Analyze and verify understanding**:
    - Cross-reference the expressed requirements with actual code
    - Identify any discrepancies or misunderstandings
@@ -40,6 +41,7 @@ You are tasked with creating detailed implementation plans through an interactiv
    - Determine true scope based on codebase reality
 
 4. **Present informed understanding and focused questions**:
+
    ```
    Based on the ticket and my research of the codebase, I understand we need to [accurate summary].
 
@@ -75,6 +77,7 @@ After getting initial clarifications:
 4. **Wait for ALL sub-tasks to complete** before proceeding
 
 5. **Present findings and design options**:
+
    ```
    Based on my research, here's what I found:
 
@@ -98,6 +101,7 @@ After getting initial clarifications:
 Once aligned on approach:
 
 1. **Create initial plan outline**:
+
    ```
    Here's my proposed plan structure:
 
@@ -144,6 +148,7 @@ After structure approval:
 [A Specification of the desired end state after this plan is complete, and how to verify it]
 
 ### Key Discoveries:
+
 - [Important finding with file:line reference]
 - [Pattern to follow]
 - [Constraint to work within]
@@ -159,11 +164,13 @@ After structure approval:
 ## Phase 1: [Descriptive Name]
 
 ### Overview
+
 [What this phase accomplishes]
 
 ### Changes Required:
 
 #### 1. [Component/File Group]
+
 **File**: `path/to/file.ext`
 **Changes**: [Summary of changes]
 
@@ -174,6 +181,7 @@ After structure approval:
 ### Success Criteria:
 
 #### Verification Steps:
+
 - [ ] Migration applies cleanly: `make migrate`
 - [ ] Unit tests pass: `make test-component`
 - [ ] Type checking passes: `npm run typecheck`
@@ -184,17 +192,19 @@ After structure approval:
 
 ## Phase 2: [Descriptive Name]
 
-[Similar structure with both automated and manual success criteria...]
+[Similar structure...]
 
 ---
 
 ## Testing Strategy
 
 ### Unit Tests:
+
 - [What to test]
 - [Key edge cases]
 
 ### Integration Tests:
+
 - [End-to-end scenarios]
 
 ## Performance Considerations
@@ -212,12 +222,12 @@ After structure approval:
 - Similar implementation: `[file:line]`
 
 **Implementation Note**: After completing a phase and once all automated verification steps pass, pause for manual confirmation from the user before proceeding to the next phase.
-
 ````
 
 ### Step 5: Review
 
 1. **Present the draft plan location**:
+
    ```
    I've created the initial implementation plan at:
    `.agents/plans/YYYY-MM-DD-ENG-XXXX-description.md`
@@ -229,13 +239,13 @@ After structure approval:
    - Missing edge cases or considerations?
    ```
 
-3. **Iterate based on feedback** - be ready to:
+2. **Iterate based on feedback** - be ready to:
    - Add missing phases
    - Adjust technical approach
-   - Clarify success criteria (both automated and manual)
+   - Clarify success criteria
    - Add/remove scope items
 
-4. **Continue refining** until the user is satisfied
+3. **Continue refining** until the user is satisfied
 
 ## Completion
 
@@ -249,6 +259,7 @@ When the user indicates the plan is satisfactory:
    > The implementation plan is ready at `.agents/plans/[filename].md`.
    >
    > When you're ready to implement, you can:
+   >
    > - Run `/implement .agents/plans/[filename].md` to execute the plan
    > - Or start a new session and reference the plan
 
@@ -258,6 +269,7 @@ When the user indicates the plan is satisfactory:
    - End the conversation
 
 **Key points**:
+
 - The `/plan` command ends after the plan file is written
 - Implementation is a separate activity using a different command
 - Do not ask for permission to proceed with implementation
@@ -281,7 +293,7 @@ When the user indicates the plan is satisfactory:
    - Read all context files COMPLETELY before planning
    - Research actual code patterns using parallel sub-tasks
    - Include specific file paths and line numbers
-   - Write measurable success criteria with clear automated vs manual distinction
+   - Write measurable success criteria
 
 4. **Be Practical**:
    - Focus on incremental, testable changes
@@ -301,10 +313,10 @@ When the user indicates the plan is satisfactory:
    - The implementation plan must be complete and actionable
    - Every decision must be made before finalizing the plan
 
-
 ## Common Patterns
 
 ### For Database Changes in Web Services:
+
 - Start with schema/migration
 - Update the model file (e.g. docstring, relations, etc)
 - Add repository methods
@@ -313,12 +325,14 @@ When the user indicates the plan is satisfactory:
 - Update clients
 
 ### For Net New Features:
+
 - Research existing patterns first
 - Start with data model
 - Build business logic
 - Add "frontend" (e.g. API routes or new UI components)
 
 ### For Refactoring:
+
 - Document current behavior
 - Plan incremental changes
 - Do not maintain backwards compatibility unless specifically requested
@@ -342,6 +356,5 @@ Based on the ticket, I understand we need to track parent-child relationships fo
 
 **Important Note**
 
-It is critical that the plan develops capabilities in an incremental fashion. And then each phase builds upon a stronger foundation set by the previous phase.
-
-Each phase should robustly validate changes via automated testing to ensure this foundation sets correctly.
+- For more complex work you should include code examples in the plan document to capture the rough shape of expected changes.
+- It is critical that the plan develops capabilities in an incremental fashion. And then each phase builds upon a stronger foundation set by the previous phase. Each phase should robustly validate changes via automated testing to ensure this foundation sets correctly.
