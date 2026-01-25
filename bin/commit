@@ -1,0 +1,105 @@
+#!/bin/bash
+#
+# commit
+#
+# Generates AI-powered commit messages for staged git changes and commits them.
+#
+# Usage: commit [-n|--no-commit] [-w|--wait-for-input]
+#   -n, --no-commit      Generate commit message without committing
+#   -w, --wait-for-input Generate commit message and prompt for confirmation
+
+# Parse command line arguments
+NO_COMMIT=false
+WAIT_FOR_INPUT=false
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -n|--no-commit)
+            NO_COMMIT=true
+            shift
+            ;;
+        -w|--wait-for-input)
+            WAIT_FOR_INPUT=true
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1" >&2
+            echo "Usage: commit [-n|--no-commit] [-w|--wait-for-input]" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Check for staged changes
+git diff --cached --quiet
+if [ $? -eq 0 ]; then
+    echo "Error: No staged changes to commit" >&2
+    exit 1
+fi
+
+# Get staged diff
+DIFF=$(git diff --cached)
+
+# Prompt template for AI agent
+PROMPT_TEMPLATE=$(cat << 'EOF'
+Generate a conventional commit message with the following format:
+
+<type>(<scope>): <subject>
+
+<body>
+
+Guidelines:
+- Type: One of feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+- Scope: Optional, represents the module/component affected
+- Subject: Brief description in imperative mood (e.g., "add feature", not "added")
+- Keep the first line ≤72 characters
+- Body: Detailed explanation (10 lines maximum), separated by blank line. Optional, use for larger changsets.
+- Reference specific files, functions, or classes changed using backticks
+
+Examples:
+feat(auth): add JWT token validation
+fix(api): resolve race condition in user creation
+docs(readme): update installation instructions
+
+For this commit, analyze the changes and provide ONLY the commit message text (no quotes, no additional commentary).
+
+Here are the staged changes:
+
+EOF
+)
+
+# Compose full prompt
+prompt="${PROMPT_TEMPLATE}${DIFF}"
+
+# Use environment variable for agent command or default
+AGENT_CMD="${COMMIT_AGENT_CMD:-opencode run}"
+
+# Generate commit message
+COMMIT_MSG=$($AGENT_CMD "$prompt")
+
+# Exit if agent command failed
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to generate commit message" >&2
+    exit 1
+fi
+
+echo "$COMMIT_MSG"
+
+# Exit if in no-commit mode
+if [ "$NO_COMMIT" = true ]; then
+    exit 0
+fi
+
+echo ""
+
+# Prompt for confirmation if wait-for-input mode
+if [ "$WAIT_FOR_INPUT" = true ]; then
+    read -p "Commit with this message? (y/n): " -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Commit cancelled"
+        exit 0
+    fi
+fi
+
+# Execute git commit
+git commit -m "$COMMIT_MSG"

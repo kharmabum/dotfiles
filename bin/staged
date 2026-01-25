@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# staged
+#
+# Summarizes staged git changes using AI without committing.
+# This is a convenience wrapper around 'commit -n'
+
+exec "$(dirname "$0")/commit" -n "$@"

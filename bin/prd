@@ -60,7 +60,7 @@ fi
 prompt="${PROMPT_TEMPLATE}${DIFF}"
 
 # Use environment variable for agent command or default
-AGENT_CMD="${PRD_AGENT_CMD:-ocr}"
+AGENT_CMD="${PRD_AGENT_CMD:-opencode run}"
 
 # Invoke agent command
 $AGENT_CMD "$prompt"
