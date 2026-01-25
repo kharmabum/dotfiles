@@ -41,8 +41,16 @@ if [ -z "$CHANGED_FILES" ]; then
     exit 1
 fi
 
-# Get full diff
-DIFF=$(git diff "$MERGE_BASE" HEAD)
+# Filter out lock files
+FILTERED_FILES=$(echo "$CHANGED_FILES" | grep -v -E '(package-lock\.json|yarn\.lock|pnpm-lock\.yaml|Gemfile\.lock|Cargo\.lock|composer\.lock|poetry\.lock|go\.sum|\.lock)$')
+
+if [ -z "$FILTERED_FILES" ]; then
+    echo "Error: No non-lock files changed between $MERGE_BASE and HEAD" >&2
+    exit 1
+fi
+
+# Get full diff for non-lock files only
+DIFF=$(git diff "$MERGE_BASE" HEAD -- $FILTERED_FILES)
 
 # Output diff to stdout
 echo "$DIFF"
