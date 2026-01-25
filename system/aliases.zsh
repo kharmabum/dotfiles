@@ -75,11 +75,32 @@ if [[ "$OSTYPE" == darwin* ]]; then
   }
 fi
 
+# Get PID for a specific port
 function port-pid() {
-  netstat -vanp tcp | grep $1 # should work on linux and mac
-  # lsof -i tcp:$1 # mac only
+  lsof -nP -iTCP:$1 | grep LISTEN
 }
 
+# Get detailed info for a port (optionally pass -v for verbose)
+function port-info() {
+  local port=$1
+  local verbose=${2:--brief}
+  
+  echo "Port $port:"
+  lsof -nP -iTCP:$port | grep LISTEN
+  
+  if [[ "$verbose" == "-v" ]]; then
+    local pid=$(lsof -nP -iTCP:$port -sTCP:LISTEN -t)
+    if [[ -n "$pid" ]]; then
+      echo -e "\nProcess details:"
+      ps -fp $pid
+    fi
+  fi
+}
+
+# List all listening ports with process details
+function port-list() {
+  lsof -nP -iTCP -sTCP:LISTEN | awk 'NR==1 || /LISTEN/ {print $1, $2, $9}' | column -t
+}
 alias du-disk='du -a / | sort -n -r | head -n 5'
 
 function ssh-pbcopy() {
