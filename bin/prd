@@ -24,13 +24,46 @@ List all changes as a bulleted list in imperative mood following these rules:
 - Use imperative mood (e.g., "Add method", "Update class", not "Added" or "Updates")
 
 Example changes section:
+```
 - Change `supplier_ids` parameter to `global_supplier_ids` in **OverviewSearchCriteria**, **OverviewFilterRequest** and **OverviewSupplierGroupsRequest**
 - Add private constant `TRANSITIVE_RELATIONSHIP_MAPPING` to **OverviewQueryBuilder**, and change `supplier_ids` to `global_supplier_ids` in the `FILTER_COLUMN_MAPPING` constant
 - Create `applyTransitiveRelationshipConditions` method in **OverviewQueryBuilder**
 - Update annotations for `applyFilters` method in **OverviewQueryBuilder**
 - Remove `'supplier_ids'` case and add `'global_supplier_ids'` case to the `applyFilters` method in **OverviewQueryBuilder**
+```
 
-Aim for brevity and succintness. For large changesets, group related changes e.g. per file or per module.
+Aim for brevity and succintness. For large changesets, group related changes e.g. per file or per module
+
+Example large changes section:
+```
+### Dependency Management
+- Remove `requirements.txt` and `requirements-mkdocs.txt` files
+- Add `uv.lock` for dependency locking
+- Configure `[[tool.uv.index]]` entries in `pyproject.toml` for applePyPi (primary), PyPI (supplemental), and apple-pypi-publish (explicit)
+
+### Makefile
+- Rename `bash` target to `shell` and enhance it to accept optional commands via `ARGS` or positional arguments
+- Add `get_args` function definition to support flexible argument passing (supports `make dc ARGS="..."`, `make dc logs`, and `make dc logs -- -f`)
+- Update `test` target to use `uv run pytest` instead of `python -m pytest`
+- Update `test-venv` target to use `uv run pytest` instead of `python -m pytest`
+- Replace `compile-dependencies` target implementation with `uv lock`
+- Replace `upgrade-dependencies` target implementation with `uv lock --upgrade`
+
+### Docker Images
+- Update `deploy/docker/python3.11-runtime/Dockerfile` to install `uv==0.9.26` via pip
+- Update `docker/python3.11-runtime/Dockerfile` to install `uv==0.9.26` via pip
+- Replace `COPY ./requirements.txt` with `COPY uv.lock pyproject.toml` in both Dockerfiles
+
+### CI/CD
+- Update `rio.yml` to install `uv==0.9.26` instead of `uv==0.6.13`
+- Replace `uv pip install --system -r requirements-mkdocs.txt` with `uv sync --frozen --group docs` in build pipeline
+
+### Documentation
+- Update `docs/setup-local.md` to recommend uv for dependency management alongside pyenv
+- Reorder virtual environment setup steps to install uv first
+- Update virtual environment creation command from `python -m venv .venv` to `uv venv`
+- Replace `pip install -r requirements.txt` with `uv sync` for installing dependencies
+```
 
 Do not create a PR. Only output the PR description.
 

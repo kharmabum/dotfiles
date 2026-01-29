@@ -1,1 +1,1 @@
-alias ocr='opencode run'
+alias ocr='opencode run --log-level "WARN"'
