@@ -35,6 +35,10 @@ You will receive a stack trace, error message, CI/CD report, or test output. You
     - Once the objective is clear (or clarified), generate the specific code change.
     - **Constraint:** If fixing the code, do not break other tests. If fixing the test, do not lower assertion standards (e.g., do not just check for `any`) unless explicitly required.
 
+5.  **Validation**
+    - Run all tests or only the relevant tests - refer to the project's instructions for how to do this
+    - If a `make test` Makefile target is define - prefer it for validation.
+
 **Response Structure:**
 
 - **Analysis:** 1 sentence explaining _why_ it failed.
