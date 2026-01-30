@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# git-diff-report
+#
+# Generates a markdown report with commit history and diff between current branch and base branch
+#
+# Usage: git-diff-report <base-branch>
+
+# Check for base branch argument
+if [ -z "$1" ]; then
+    echo "Error: Base branch argument required" >&2
+    echo "Usage: git-diff-report <base-branch>" >&2
+    exit 1
+fi
+
+BASE_BRANCH="$1"
+
+# Change to repository root
+REPO_ROOT=$(git rev-parse --show-toplevel)
+cd "$REPO_ROOT" || exit 1
+
+# Fetch remote
+git fetch --all
+
+# Find merge base
+MERGE_BASE=$(git merge-base HEAD "$BASE_BRANCH")
+
+if [ -z "$MERGE_BASE" ]; then
+    echo "Error: Could not find merge base between HEAD and $BASE_BRANCH" >&2
+    exit 1
+fi
+
+# Get commit history between merge base and HEAD
+COMMIT_HISTORY=$(git log --pretty=format:"- %h %s (%an, %ar)" "$MERGE_BASE"..HEAD)
+
+if [ -z "$COMMIT_HISTORY" ]; then
+    echo "Error: No commits found between $MERGE_BASE and HEAD" >&2
+    exit 1
+fi
+
+# Get diff using git-diff script
+SCRIPT_DIR=$(dirname "$0")
+DIFF=$("$SCRIPT_DIR/git-diff" "$BASE_BRANCH" 2>&1)
+
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to get diff from git-diff" >&2
+    echo "$DIFF" >&2
+    exit 1
+fi
+
+# Output markdown report
+echo "## Commit History"
+echo ""
+echo "$COMMIT_HISTORY"
+echo ""
+echo "## Diff"
+echo ""
+echo '```'
+echo "$DIFF"
+echo '```'

@@ -1,6 +1,7 @@
 ---
 name: resolve
 description: Investigate the provided error or test failure, determine if the issue is a logical bug or an outdated test, and generate a fix.
+mode: orchestrator
 argument-hint: <stack trace / error message / user guidance >
 ---
 

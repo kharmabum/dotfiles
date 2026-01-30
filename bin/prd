@@ -82,7 +82,7 @@ fi
 BASE_BRANCH="$1"
 
 # Get diff using git-diff helper script
-DIFF=$(git-diff "$BASE_BRANCH")
+DIFF_REPORT=$(git-diff-report "$BASE_BRANCH")
 
 # Exit if git-diff failed
 if [ $? -ne 0 ]; then
@@ -90,7 +90,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Compose full prompt
-prompt="${PROMPT_TEMPLATE}${DIFF}"
+prompt="${PROMPT_TEMPLATE}${DIFF_REPORT}"
 
 # Use environment variable for agent command or default
 AGENT_CMD="${PRD_AGENT_CMD:-opencode run}"
