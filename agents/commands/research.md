@@ -165,6 +165,8 @@ Focus on creating a technical map of the system as it exists today. Describe wha
   - Use snake_case for multi-word field names (e.g., `last_updated`, `git_commit`)
   - Tags should be relevant to the research topic and components studied
 
+You _must_ write the research document to .agents/research - DO NOT FORGET TO CREATE THE FILE
+
 ### Critical
 
 Unless specifically requested by the user, DO NOT:

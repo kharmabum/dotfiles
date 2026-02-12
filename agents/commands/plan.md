@@ -356,6 +356,7 @@ Based on the ticket, I understand we need to track parent-child relationships fo
 
 **Important Note**
 
+- You _must_ write the plan document to .agents/plans - DO NOT FORGET TO CREATE THE PLAN FILE
 - For more complex work you should include code examples in the plan document to capture the rough shape of expected changes.
 - It is critical that the plan develops capabilities in an incremental fashion. And then each phase builds upon a stronger foundation set by the previous phase. Each phase should robustly validate changes via automated testing to ensure this foundation sets correctly.
 - If the user provides specific queries or code snippets as examples these should generally be incorporated directly into the plan.
