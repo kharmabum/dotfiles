@@ -1,7 +1,6 @@
 ---
 name: git-diff-analysis
 description: Efficiently summarize changes using the git-diff CLI tool.
-mode: ask
 ---
 
 # Git Diff Analysis
