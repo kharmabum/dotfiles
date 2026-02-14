@@ -3,6 +3,5 @@ llms-txt() {
 }
 
 md-table() {
-    uv run ~/.dotfiles/python/scripts/csv_to_md.py --pretty
+    uv run ~/.dotfiles/python/scripts/csv_to_md.py --pretty "$@"
 }
-
