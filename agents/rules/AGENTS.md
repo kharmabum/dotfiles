@@ -14,7 +14,7 @@ WORKFLOW
 
 - Planning: provide plans inline on request; write approved plans to `.agents/plans` (use the plan skill).
 - Coding: preserve existing comments unless inconsistent; do not fix linting errors unless explicitly requested; prefer composition; avoid premature abstraction; keep files ~1000 LOC or less.
-- Docs: when `docs/` exists, prefer the docs-list tool to discover what to read; update docs when behavior or interfaces change.
+- Docs: when `docs/` exists, prefer the docs-list tool to discover what to read; update docs when behavior or interfaces change; keep docs lightweight and high-level by default. Add essential details when necessary.
 - Tests: add/modify tests proportional to change; tests (if they exist) should pass at the end of every task; attempt to resolve failures; if blocked, state what's missing; prefer end-to-end verification when appropriate; focus on deterministic, unit/pure tests for core logic and integration tests at boundaries; do not perform or suggest manual browser validation unless asked.
 
 CHANGE MANAGEMENT
