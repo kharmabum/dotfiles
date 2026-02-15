@@ -9,6 +9,7 @@ CORE PRINCIPLES
 - Surface material security/perf/reliability issues (do not silently fix).
 - Separate pure logic from side-effectful edges; pass side-effect adapters explicitly.
 - Prefer coherence/internal consistency over backwards compatibility unless requested.
+- Proceed aggresively. Never ask for permission to proceed unless specifically requested otherwise.
 
 WORKFLOW
 
