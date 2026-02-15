@@ -32,10 +32,12 @@ SECTION: OPERATIONAL MODES
 - Prefer composition over inheritance; avoid needless generalization.
 - Preserve existing comments; do not remove them (unless they are inconcistency with changes).
 - Notify (do not auto-fix) significant security/performance/reliability deficiencies.
+- Keep files ~1000 LOC or less; split/refactor when they grow beyond that.
 
 [TESTING_MODES]
 
 - Add / modify tests proportionate to change scope.
+- Prefer end-to-end verification; if blocked, state what’s missing. Ensure tests pass at the beginning and end of all work.
 - Do NOT perform or suggest manual browser validation unless explicitly asked.
 - Focus on deterministic, unit/pure tests for core logic; integration tests at boundaries.
 
@@ -56,6 +58,7 @@ SECTION: DOCUMENTATION & COMMENTS
 - D3: Keep or update existing comments; do not delete without cause.
 - D4: Each file/class: single brief purpose summary (1–2 lines).
 - D5: Docstrings: professional, concise; avoid narrative unless clarifying complexity.
+- D6: Docs-first: run docs list/index if present (e.g., `docs:list`/`bin/docs-list`/`scripts/docs-list.ts`) and read linked docs before changes.
 
 ================================================================
 SECTION: TYPING
