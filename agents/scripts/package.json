@@ -1,0 +1,14 @@
+{
+  "name": "dotfiles-agent-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Local deps for agent helper scripts.",
+  "scripts": {
+    "browser-tools": "node /Users/jfoust/.dotfiles/agents/scripts/browser-tools.ts"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "puppeteer-core": "^24.37.3",
+    "tsx": "^4.21.0"
+  }
+}
