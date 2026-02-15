@@ -1,12 +1,10 @@
 #!/usr/bin/env tsx
 
-import { readdirSync, readFileSync } from 'node:fs';
-import { dirname, join, relative } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const docsListFile = fileURLToPath(import.meta.url);
-const docsListDir = dirname(docsListFile);
-const DOCS_DIR = join(docsListDir, '..', 'docs');
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { join, relative, resolve } from 'node:path';
+const argPath = process.argv[2]?.trim();
+const docsRoot = process.env.DOCS_LIST_ROOT?.trim();
+const DOCS_DIR = resolve(argPath || (docsRoot ? join(docsRoot, 'docs') : join(process.cwd(), 'docs')));
 
 const EXCLUDED_DIRS = new Set(['archive', 'research']);
 
@@ -122,7 +120,15 @@ function extractMetadata(fullPath: string): {
   return { summary: normalized, readWhen };
 }
 
-console.log('Listing all markdown files in docs folder:');
+console.log(`Listing all markdown files in docs folder: ${DOCS_DIR}`);
+
+if (!existsSync(DOCS_DIR)) {
+  console.error(
+    `\nNo docs directory found at ${DOCS_DIR}. ` +
+      'Run from a repo root with a docs/ folder or pass a docs path: `docs-list /path/to/docs`.'
+  );
+  process.exit(0);
+}
 
 const markdownFiles = walkMarkdownFiles(DOCS_DIR);
 

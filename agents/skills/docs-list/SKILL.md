@@ -5,7 +5,7 @@ description: List docs/ markdown files and validate front-matter (summary/read_w
 
 # Docs List
 
-Run the repo's docs listing helper before making changes so you read the right docs first.
+Run the shared `docs-list` helper before making changes so you read the right docs first.
 
 ## When to use
 
@@ -13,24 +13,22 @@ Run the repo's docs listing helper before making changes so you read the right d
 
 ## Workflow
 
-1. Check for an existing docs list entrypoint in this order:
-- `npm run docs:list`
-- `pnpm run docs:list`
-- `bin/docs-list`
-- `scripts/docs-list.ts`
-
-2. If none exist, offer to copy the shared script from:
-- `/Users/jfoust/.dotfiles/agents/scripts/docs-list.ts`
-
-3. Run the lister (example):
+1. Run the lister (example):
 
 ```bash
-tsx scripts/docs-list.ts
+docs-list
 ```
 
-4. Read any docs whose `read_when` hints match the task.
+2. Optionally pass a docs path or override with `DOCS_LIST_ROOT`:
+
+```bash
+docs-list /absolute/path/to/docs
+DOCS_LIST_ROOT=/absolute/path/to/repo docs-list
+```
+
+3. Read any docs whose `read_when` hints match the task.
 
 ## Notes
 
-- The script expects to live at `scripts/docs-list.ts` with `docs/` at repo root.
-- Keep the script byte-identical when sharing it across repos.
+- Assumes the `docs-list` alias is available in the environment.
+- The helper accepts an optional docs path argument; otherwise it falls back to `DOCS_LIST_ROOT/docs`, then `$PWD/docs`.
