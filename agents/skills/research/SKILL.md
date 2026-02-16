@@ -59,7 +59,7 @@ You are tasked with conducting comprehensive research across the codebase to ans
 
 ### Step 6: Write research document
 
-- Use `agents/skills/research/references/research_template.md`.
+- Use `references/research_template.md`.
 - Include YAML frontmatter and required sections.
 - Do not use placeholder values.
 

@@ -109,7 +109,7 @@ Does this phasing make sense? Should I adjust the order or granularity?
 1. Write the plan to `.agents/plans/YYYY-MM-DD-ENG-XXXX-description.md`.
    - Use `date +%Y-%m-%d` for the date.
    - Omit the ticket if none exists.
-2. Use the template at `agents/skills/plan/references/plan_template.md`.
+2. Use the template at `references/plan_template.md`.
 
 ### Step 5: Review
 
