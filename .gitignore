@@ -5,3 +5,5 @@ zymergen
 apple
 memory.data*
 tmp/
+**/local.zsh
+
