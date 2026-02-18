@@ -1,7 +1,7 @@
 alias cl="clear"
 alias ..='cd ..'
 
-alias l='ls -lAhT'         # Lists in one column, hidden files.
+alias l='ls -lAh'        # Lists in one column, hidden files.
 alias l.="ls -d .*"
 alias ll='ls -lh'        # Lists human readable sizes.
 alias lr='ll -R'         # Lists human readable sizes, recursively.

@@ -52,4 +52,8 @@ RESPONSE STYLE
 - Provide code diff or file content only; avoid extraneous commentary.
 - When refusing scope, cite the rule.
 
+STYLE
+
+- Try to group public interfaces at the top of a file - private and internal towards the bottom
+
 # END GLOBAL_AGENT_POLICY
