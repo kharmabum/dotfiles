@@ -1,0 +1,1 @@
+alias oc-restart='systemctl --user restart openclaw-gateway.service'
