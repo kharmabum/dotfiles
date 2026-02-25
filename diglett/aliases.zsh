@@ -4,3 +4,4 @@ alias diglett-vnc-tunnel='cloudflared access tcp --hostname vnc.diglett.xyz/ --u
 
 # NUC
 alias diglett-chromium='google-chrome --disable-gpu &'
+alias diglett-vnc-restart='vncserver -kill :1 2>/dev/null; vncserver :1'

@@ -1,1 +1,2 @@
-alias oc-restart='systemctl --user restart openclaw-gateway.service'
+alias oc='openclaw'
+alias oc-restart='openclaw gateway restart && openclaw browser extension install'
