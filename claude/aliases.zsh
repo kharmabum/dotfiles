@@ -1,0 +1,1 @@
+alias claude-ui='claude show-dashboard'

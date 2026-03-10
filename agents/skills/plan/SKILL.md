@@ -106,7 +106,7 @@ Does this phasing make sense? Should I adjust the order or granularity?
 
 ### Step 4: Detailed Plan Writing
 
-1. Write the plan to `.agents/plans/YYYY-MM-DD-ENG-XXXX-description.md`.
+1. Write the plan to `.agents-local/plans/YYYY-MM-DD-ENG-XXXX-description.md`.
    - Use `date +%Y-%m-%d` for the date.
    - Omit the ticket if none exists.
 2. Use the template at `/Users/jfoust/.dotfiles/agents/skills/plan/references/plan_template.md`.
@@ -117,7 +117,7 @@ Does this phasing make sense? Should I adjust the order or granularity?
 
 ```
 I've created the initial implementation plan at:
-`.agents/plans/YYYY-MM-DD-ENG-XXXX-description.md`
+`.agents-local/plans/YYYY-MM-DD-ENG-XXXX-description.md`
 
 Please review it and let me know:
 - Are the phases properly scoped?
@@ -138,7 +138,7 @@ When the plan is approved:
 
 ## Output
 
-- A plan file under `.agents/plans/` plus a concise summary.
+- A plan file under `.agents-local/plans/` plus a concise summary.
 
 ## Constraints
 

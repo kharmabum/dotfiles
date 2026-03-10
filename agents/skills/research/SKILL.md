@@ -55,7 +55,7 @@ You are tasked with conducting comprehensive research across the codebase to ans
 ### Step 5: Gather metadata
 
 - Prepare metadata for the research document.
-- Filename: `.agents/research/YYYY-MM-DD-ENG-XXXX-description.md` (omit ticket if none).
+- Filename: `.agents-local/research/YYYY-MM-DD-ENG-XXXX-description.md` (omit ticket if none).
 
 ### Step 6: Write research document
 
@@ -96,7 +96,7 @@ You are tasked with conducting comprehensive research across the codebase to ans
 
 ## Output
 
-- Research document in `.agents/research/` plus a concise summary.
+- Research document in `.agents-local/research/` plus a concise summary.
 
 ## Constraints
 
